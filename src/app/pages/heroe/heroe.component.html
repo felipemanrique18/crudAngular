@@ -1,0 +1,45 @@
+<div class="container ">
+    <div class="">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2>Heroes <b>App</b></h2>
+                    </div>
+                    <div class="col-xs-12">
+                        <a routerLink="/heroes" class="btn btn-danger"><i class="fa fa-arrow-circle-left"></i> <span> Regresar</span></a>
+                    </div>
+                </div>
+            </div>
+            <form class="row g-3 mt-5 animate__animated animate__fadeIn" (ngSubmit)="guardar(f)" #f="ngForm" [class.was-validated]="f.submitted">
+                <div class="col-md-12">
+                    <label for="inputEmail4" class="form-label">FirebaseId</label>
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="FirebaseId" name="id" [(ngModel)]="heroe.id" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="inputPassword4" name="nombre" [(ngModel)]="heroe.nombre" required>
+                    <div class="invalid-feedback">
+                        Ingresa un nombre
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="inputAddress" class="form-label">Poder </label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" name="poder" [(ngModel)]="heroe.poder" required>
+                    <div class="invalid-feedback">
+                        Ingresa un poder
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="inputAddress2" class="form-label d-block">Estado</label>
+                    <button class=" btn btn-success col-6" *ngIf="heroe.vivo" (click)="heroe.vivo=false"><i class="fa fa-smile-beam"></i> Vivo</button>
+                    <button class=" btn btn-danger col-6" *ngIf="!heroe.vivo" (click)="heroe.vivo=true"><i class="fa fa-dizzy"></i> Muerto</button>
+                    <!-- <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"> -->
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">
+                    <div class="col-xs-6">
+                        <h2>Heroes <b>App</b></h2>
+                    </div>
+                    <div class="col-xs-12">
+                        <a routerLink="/heroe/nuevo" class="btn btn-success float-end "><i class="fa fa-plus"></i> <span> Añadir</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 animate__animated animate__fadeIn">
+
+                <div class="d-flex align-items-center" *ngIf="cargando">
+                    <strong>Loading...</strong>
+                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="!cargando && heroes.length==0">
+                    <strong><i class="fa fa-exclamation-triangle"></i> hay registros</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="table-responsive ">
+                    <table class="table table-striped" *ngIf="!cargando && heroes.length>0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>Nombre</th>
+                                <th>Poder</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let heroe of heroes; let i=index">
+                                <td>
+                                    {{i+1}}
+                                </td>
+                                <td>{{heroe.nombre}}</td>
+                                <td>{{heroe.poder}}</td>
+                                <td>
+                                    <span class="badge bg-primary" *ngIf="heroe.vivo">Vivo</span>
+                                    <span class="badge bg-danger" *ngIf="!heroe.vivo">Muerto</span>
+                                </td>
+                                <td>
+                                    <a class="edit" [routerLink]="['/heroe',heroe.id]"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                                    <a class="delete" (click)="borrarHeroe(heroe,i)"><i class="fa fa-trash-alt" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
